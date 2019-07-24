@@ -54,12 +54,11 @@ require('src/connection.php');
                                 <td><a role="button" class="btn btn-primary" href="update-prop.php?id=<?php echo $props['id']; ?>">Modifier</a></td>
                                 <td><a role="button" class="btn btn-danger" href="delete-prop.php?id=<?php echo $props['id']; ?>">Supprimer</a></td>
                             </tr>
-                        </tbody>
-                    </table>
-
                 <?php
                 }
                 ?>
+                     </tbody>
+                    </table>
             </div>
             <a role="button" class="btn btn-success" href="create-prop.php">Ajouter une proposition</a>
         </div>
