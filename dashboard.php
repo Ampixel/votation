@@ -24,18 +24,17 @@ require('src/connection.php');
         <div class="mt-4">
             <h2>Vos propositions : </h2>
             <p>Nombre de propositions: </p>
-            <p>mettre un include de mes propositions </p>
             <div>
-                <table>
+                <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Titre</th>
-                            <th>Soumise au vote</th>
-                            <th>Pour</th>
-                            <th>Contre</th>
-                            <th>Modifier</th>
-                            <th>Supprimer</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Soumise au vote</th>
+                            <th scope="col">Pour</th>
+                            <th scope="col">Contre</th>
+                            <th scope="col">Modifier</th>
+                            <th scope="col">Supprimer</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,7 +45,7 @@ require('src/connection.php');
                         $prop = $query->fetchAll(PDO::FETCH_ASSOC);
                         foreach ($prop as $proposition => $props) { ?>
                             <tr>
-                                <th><?php echo $props['id'] ?></th>
+                                <th scope="row"><?php echo $props['id'] ?></th>
                                 <td><?php echo $props['title'] ?></td>
                                 <td> boolean vote  </td>
                                 <td> nbr pour </td>
@@ -67,6 +66,39 @@ require('src/connection.php');
         <div class="mt-4">
             <h2>Propositions soumises au vote : </h2>
             <hr>
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Utilisateur</th>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Déjà voté</th>
+                            <th scope="col">Pour</th>
+                            <th scope="col">Contre</th>
+                            <th scope="col">Voir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $query = $db->query('SELECT * FROM proposition ');
+                        $prop = $query->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($prop as $proposition => $props) { ?>
+                            <tr>
+                                <th scope="row"><?php echo $props['id'] ?></th>
+                                <td><?php echo $props['id_user'] ?></td>
+                                <td><?php echo $props['title'] ?></td>
+                                <td> nbr de vote </td>
+                                <td> nbr pour </td>
+                                <td>nbr de contre</td>
+                                <td><a role="button" class="btn btn-primary" href="#">Voir</a></td>
+                            </tr>
+                <?php
+                }
+                ?>
+                     </tbody>
+                    </table>
+            </div>
         </div>
     </div>
 </body>

@@ -6,5 +6,4 @@ try {
     die('Erreur : '.$e->getMessage());
 }
 
-var_dump($db);
 ?>

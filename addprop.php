@@ -17,10 +17,6 @@ $req->execute(array(
     ':texte' => $texte,
     ':id_user' => $id_user
 ));
-
-
-    echo "\nPDO::errorInfo():\n";
-    print_r($db->errorInfo());
  
 
 header('location: dashboard.php');
